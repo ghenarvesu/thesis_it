@@ -1,0 +1,165 @@
+
+<?php
+include('mainnav.php');
+ ?>
+
+<link rel="stylesheet" href="assets/processing/foundation.min.css">
+<link rel="stylesheet" href="assets/processing/img.min.css">
+<link rel="stylesheet" href="assets/css/form-basic.css">
+
+<script type="text/javascript" src="script/jquery-1.8.2.min.js"></script>
+
+
+<div class="container">
+        <div class="media-container-row">
+            <div class="title col-12 col-md-8">
+                <h2 class="align-center pb-3 mbr-fonts-style display-2"><br><br>Soil Test
+                </h2>
+                <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5"></h3>
+
+            </div>
+        </div>
+    </div>
+
+   <div class="main-content">
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row collapse">
+    <div class="small-3 columns">
+
+    <input type="file" name="file" id="imageLoader"/>
+
+    <a href="https://html-color-codes.info/colors-from-image/#" id="webbtn"></a>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<center>
+
+<table>
+  <tr>
+    <td colspan="3">
+      <canvas id="imageCanvas" width="300" height="300"></canvas>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <canvas id="pixCanvas" width="100" height="100" style="background-color: #ddd;"></canvas>
+    </td>
+    <td>
+      <canvas id="barvaCanvas" width="100" height="100" style="background-color: #ddd;" hidden></canvas>
+    </td>
+  </tr>
+</table>
+
+  <div class="main-content">
+
+<form class="form-basic" method="post" action="#">
+  <table align="center">
+    <tr>
+      <td> <label for="middle-label" class="text-right middle smalltext">Color code:</label></td>
+      <td><input type="text" name="pixcolor" id="pixcolor" style="height:40px;" placeholder="Color Hex Value" readonly/></td>
+    </tr>
+
+    <tr>
+      <td colspan="2"><input name="Test" type="Submit"  value="Test" /></td>
+    </tr>
+  </table>
+</form>
+
+<?php
+$level = "";
+
+
+if(isset($_POST["Test"]))
+{
+  $con = mysql_connect("localhost","root","");
+
+  if (!$con)
+  {
+    die('Could not connect: ' . mysql_error());
+  }
+
+  mysql_select_db("db_ccasd", $con);
+  $con = mysql_connect("localhost","root","");
+
+  if(isset($_POST["pixcolor"])){
+    $pixcolor =substr($_POST["pixcolor"],1);
+  }else{
+    $pixcolor = "";
+  }
+
+  mysql_select_db("db_ccasd", $con);
+  $result = mysql_query("SELECT * FROM tblprocessing WHERE hex_val='".$pixcolor."'");
+
+  if(($rowval = mysql_fetch_array($result))> 0)
+  {
+    $pixcolor= $rowval["hex_val"];
+    $level= $rowval["level"];
+  }else{
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+       window.alert('Please Try Again')
+       window.location.href='imageprocess.php';
+       </SCRIPT>");}
+
+       mysql_close($con);
+
+       $name = $_FILES['file']['name'];
+             $target_dir = "upload/";
+             $target_file = $target_dir . basename($_FILES["file"]["name"]);
+
+             // Select file type
+             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+             // Valid file extensions
+             $extensions_arr = array("jpg","jpeg","png","gif");
+
+             // Check extension
+             if( in_array($imageFileType,$extensions_arr) ){
+
+                 // Convert to base64
+                 $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
+                 $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+
+                 // Insert record
+                 $query = "insert into images(name,image) values('".$name."','".$image."')";
+
+                 mysqli_query($con,$query) or die(mysqli_error($con));
+
+                 // Upload file
+                 move_uploaded_file($_FILES['file']['tmp_name'],'upload/'.$name);
+
+             }
+
+}
+
+?>
+
+
+<form class="form-basic"   method="post" enctype="multipart/form-data" name="addroom">
+  <table align="center">
+    <tr>
+    <td> <label for="middle-label" class="text-right middle smalltext">Level:</label></td>
+    <td><input type="text" id="level"  placeholder="Level" readonly value='<?php echo  $level; ?>'/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input name="Next" type="Submit" value="Next" /></td>
+    </tr>
+    </table>
+</form>
+
+
+
+<script src="assets/processing/jquery.min.js.download"></script>
+<script src="assets/processing/img.min.js.download"></script>
+<script src="assets/processing/foundation.min.js.download"></script>
+<script>
+  $(document).foundation();
+</script>
+
+<?php
+include('footer.php');
+?>
