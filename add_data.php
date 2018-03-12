@@ -1,7 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.center {
+    margin: auto;
+    width: 30%;
+    padding: 10px;
+	font-size: 16px;
+font-family:raleway;
+margin-top: 8px;
+margin-left: 100px;
+}
+
+</style>
+
 <?php
 include('mainnav.php');
  ?>
 <?php
+
 include_once 'server.php';
 
 if(isset($_POST['btn-save']))
@@ -53,39 +70,46 @@ if(isset($_POST['btn-save']))
 				</div>
 		</div>
 
+		
+		<div style="text-align:center;width:100%">
+  <div style="margin: 0 auto; display: inline-block;">
+
 	 <div class="main-content">
 <form class="form-basic" method="post" action="#">
-	<center>
-<table align="center">
-<tr>
-	<td><input type="text" name="fname" placeholder="First Name"></td>
-</tr>
-<tr>
-	<td> <input type="text" name="mname" placeholder="Middle Name"></td>
-</tr>
-<tr>
-	<td> <input type="text" name="lname" placeholder="Last name"></td>
-</tr>
-<tr>
-	<td><input type="text" name="username" placeholder="Username"></td>
-</tr>
-<tr>
-	<td><input type="password" name="password" placeholder="Password"></td>
-</tr>
+	
 
-<tr>
-	<td>   <select name="position">
+<div class="center">
+<input type="text" name="fname" placeholder="First Name">
+</div>
+
+<div class="center">
+<input type="text" name="mname" placeholder="Middle Name">
+</div>
+
+<div class="center">
+<input type="text" name="lname" placeholder="Last name">
+</div>
+
+<div class="center">
+<input type="text" name="username" placeholder="Username">
+</div>
+
+<div class="center">
+<input type="password" name="password" placeholder="Password">
+</div>
+
+<div class="center">
+<select name="position">
 						<option value="Choose Position">Choose Member Type</option>
 						<option value="admin">Admin</option>
 						<option value="epmloyee">Employee</option>
 					</select>
-</td>
-<tr>
-	<td><button type="submit" name="btn-save"><strong>SAVE</strong></button></td>
-</tr>
-	</center>
-    </table>
-    </form>
+</div>
+
+
+<button type="submit" name="btn-save"><strong>SAVE</strong></button>
+
+	    </form>
 </div>
 </center>
 </body>

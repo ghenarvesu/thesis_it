@@ -26,17 +26,10 @@
 			while ($row = mysql_fetch_array($query)) {
 				$position = $row['position'];
 
-				$_SESSION['login']=$username; // hold the user name in session
-				//$uip=$_SERVER["HTTP_X_REAL_IP"]; // get the user ip
 
-				if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-						$uip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-				} else {
-						$uip = $_SERVER['REMOTE_ADDR'];
-				}
+				$uip=$_SERVER['REMOTE_ADDR']; // get the user ip
 				// query for inser user log in to data base
-
-				mysqli_query($con,"insert into userLog(username,userIp) values('".$_SESSION['id']."','".$_SESSION['login']."','$uip')");
+				mysql_query("INSERT INTO userlog(username,userIp) values('$username','$uip')",$conn);
 				// code redirect the page after login
 			}
 
