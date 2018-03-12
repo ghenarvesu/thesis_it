@@ -54,6 +54,7 @@ include('mainnav.php');
        <table align="center">
            <tr>
            <th colspan="8"><a href="add_data.php"><button type="button" class="btn btn-primary btn-block"> ADD NEW USER</button></a></th>
+           <th colspan="8"><a href="userlog.php"><button type="button" class="btn btn-primary btn-block"> User Log</button></a></th>
            </tr>
            <th>First Name</th>
            <th>Middle Name</th>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2018 at 04:07 PM
+-- Generation Time: Mar 12, 2018 at 09:58 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -225,6 +225,65 @@ CREATE TABLE `temp` (
   `resp_ph_val` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userlog`
+--
+
+CREATE TABLE `userlog` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `userIp` varbinary(16) NOT NULL,
+  `loginTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `logoutTime` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userlog`
+--
+
+INSERT INTO `userlog` (`id`, `userId`, `username`, `userIp`, `loginTime`, `logoutTime`) VALUES
+(1, 1, 'admin', 0x3a3a31, '2016-06-29 05:56:57', '5'),
+(2, 1, 'admin', 0x3a3a31, '2016-06-29 05:57:23', '5'),
+(3, 2, 'anuj', 0x3a3a31, '2016-06-29 05:57:31', '5'),
+(4, 1, 'admin', 0x3a3a31, '2016-06-29 06:06:47', '5'),
+(5, 1, 'admin', 0x3a3a31, '2016-06-29 06:28:59', '5'),
+(6, 1, 'admin', 0x3a3a31, '2016-06-29 06:38:53', '5'),
+(7, 1, 'admin', '', '2018-03-08 09:27:26', '5'),
+(8, 1, 'admin', 0x3a3a31, '2018-03-08 09:31:42', '5'),
+(9, 1, 'admin', 0x3a3a31, '2018-03-08 09:33:37', '5'),
+(10, 1, 'admin', 0x3a3a31, '2018-03-08 09:39:36', '5'),
+(11, 1, 'admin', 0x3139322e3136382e34322e313239, '2018-03-08 09:45:18', '5'),
+(12, 1, 'admin', 0x3a3a31, '2018-03-08 09:45:55', '5'),
+(13, 1, 'admin', 0x3a3a31, '2018-03-08 10:24:18', '5'),
+(14, 1, 'admin', 0x3a3a31, '2018-03-08 10:31:27', '5'),
+(15, 1, 'admin', 0x3139322e3136382e34322e313239, '2018-03-08 11:26:42', '5'),
+(16, 1, 'admin', 0x3139322e3136382e34322e313239, '2018-03-08 12:04:39', '5'),
+(17, 1, 'admin', 0x3139322e3136382e34322e313239, '2018-03-08 12:05:54', '5'),
+(18, 1, 'admin', 0x3139322e3136382e34322e313239, '2018-03-08 12:08:38', '5'),
+(19, 1, 'admin', 0x3139322e3136382e34322e313239, '2018-03-08 12:11:33', '5'),
+(20, 1, 'admin', 0x3a3a31, '2018-03-08 12:19:56', '5'),
+(21, 1, 'admin', 0x3a3a31, '2018-03-08 12:29:25', '5'),
+(22, 1, 'admin', 0x3a3a31, '2018-03-11 08:09:32', '5'),
+(23, 1, 'admin', 0x3a3a31, '2018-03-12 06:23:18', '5'),
+(24, 1, 'admin', 0x3a3a31, '2018-03-12 06:26:40', '5'),
+(25, 1, 'admin', 0x3a3a31, '2018-03-12 06:31:28', '10'),
+(26, 1, 'admin', 0x3a3a31, '2018-03-12 06:33:17', '5'),
+(27, 1, 'admin', 0x3a3a31, '2018-03-12 06:34:01', '5'),
+(28, 1, 'admin', 0x3a3a31, '2018-03-12 06:44:36', '5'),
+(29, 1, 'admin', 0x3a3a31, '2018-03-12 06:45:03', '5'),
+(30, 1, 'admin', 0x3a3a31, '2018-03-12 06:50:42', '5'),
+(31, 1, 'admin', 0x3a3a31, '2018-03-12 06:51:15', '5'),
+(32, 1, 'admin', 0x3a3a31, '2018-03-12 06:51:51', '5'),
+(33, 1, 'admin', 0x3a3a31, '2018-03-12 06:52:34', '5'),
+(34, 1, 'admin', 0x3a3a31, '2018-03-12 06:53:11', '5'),
+(35, 1, 'admin', 0x3a3a31, '2018-03-12 06:53:26', '5'),
+(36, 1, 'admin', 0x3a3a31, '2018-03-12 06:56:35', '5'),
+(37, 1, 'admin', 0x3a3a31, '2018-03-12 07:01:18', '5'),
+(38, 1, 'admin', 0x3a3a31, '2018-03-12 07:18:31', '5');
+
 --
 -- Indexes for dumped tables
 --
@@ -266,6 +325,12 @@ ALTER TABLE `temp`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `userlog`
+--
+ALTER TABLE `userlog`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -298,6 +363,12 @@ ALTER TABLE `tblprocessing`
 --
 ALTER TABLE `tblresults`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `userlog`
+--
+ALTER TABLE `userlog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

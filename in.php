@@ -10,25 +10,37 @@
 			// Define $username and $password
 			$username=$_POST['username'];
 			$password=$_POST['password'];
-
 			// Establishing Connection with Server by passing server_name, user_id and password as a parameter
 			$conn = mysql_connect("localhost", "root", "");
-
 			// To protect MySQL injection for Security purpose
 			$username = stripslashes($username);
 			$password = stripslashes($password);
 			$username = mysql_real_escape_string($username);
 			$password = mysql_real_escape_string($password);
-
 			// Selecting Database
 			$db = mysql_select_db("db_ccasd", $conn);
-
 			// SQL query to fetch information of registerd users and finds user match.
+
 			$query = mysql_query("select * from systemcred where username LIKE '$username' AND password LIKE '$password'", $conn);
 			$rows = mysql_num_rows($query);
 			while ($row = mysql_fetch_array($query)) {
 				$position = $row['position'];
+
+				$_SESSION['login']=$username; // hold the user name in session
+				//$uip=$_SERVER["HTTP_X_REAL_IP"]; // get the user ip
+
+				if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+						$uip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+				} else {
+						$uip = $_SERVER['REMOTE_ADDR'];
+				}
+				// query for inser user log in to data base
+
+				mysqli_query($con,"insert into userLog(username,userIp) values('".$_SESSION['id']."','".$_SESSION['login']."','$uip')");
+				// code redirect the page after login
 			}
+
+			//start
 			if($row > 0){
 						$_SESSION['mem_id'] = $fetch['mem_id'];
 
@@ -48,7 +60,8 @@
 					}else{
 						echo 1;
 					}
-
+//end
+// start user type location
 			if ($rows == 1) {
 				if ($position == "admin") {
 					$_SESSION['login_user']=$position; // Initializing Session
@@ -61,9 +74,11 @@
 				$error = "Username or Password is invalid";
 				header("Location: errorlogin.php");
 			}
+//end
+
 			mysql_close($conn); // Closing Connection
-		}
-	}
+		}//2nd if  else
+	}// 1st if
 ?>
 
 <script>
