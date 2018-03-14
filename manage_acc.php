@@ -1,67 +1,41 @@
+
 <?php
-session_start();
 include('mainnav.php');
-if(isset($_SESSION['login_user']) == null) {
-  header("location: login.php");
-}
  ?>
-
-  <link rel="stylesheet" href="report.css" type="text/css">
-
-<div class="container">
-        <div class="media-container-row">
-            <div class="title col-12 col-md-8">
-                <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5">
-                <br><br>  <br>
-                Republic of the Philippines<br>
-                Province of Laguna<br>
-                CITY OF CALAMBA</br>
-
-                </h3>
-
-
-            </div>
-        </div>
-    </div>
-
+ <link rel="stylesheet" href="report.css" type="text/css">
 
 <section class="section-table cid-qx39np6mRN" id="table1-b" data-rv-view="146">
   <div class="container container-table">
   <div class="tab">
 
-  <button class="tablinks" onclick="openCity(event, 'summary')" id="defaultOpen">Summary</button>
-  <button class="tablinks" onclick="openCity(event, 'breakdown')">Breakdown</button>
-  <button class="tablinks" onclick="openCity(event, 'prog')">Crop Development</button>
+  <button class="tablinks" onclick="openCity(event, 'acc')" id="defaultOpen">Accounts</button>
+  <button class="tablinks" onclick="openCity(event, 'log')">UserLog</button>
+
 </div>
 
-<div id="summary" class="tabcontent">
+<div id="acc" class="tabcontent">
 
       <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
-		Summary
+		Accounts
       </h2>
   <?php
-include('sum.php');
+include('acc.php');
  ?>
 
 </div>
 
-<div id="breakdown" class="tabcontent">
- <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
-		Breakdown
-</h2>
-  <?php
-include('breakdown.php');
- ?>
-</div>
+<div id="log" class="tabcontent">
 
-<div id="prog" class="tabcontent">
-     <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
-		Crop Development
+      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
+		UserLog
       </h2>
   <?php
-include('CD.php');
+include('userlog.php');
  ?>
+
 </div>
+
+
 
       </div>
     </div>
@@ -111,7 +85,3 @@ for (i = 0; i < acc.length; i++) {
     }
 }
 </script>
-
-<?php
-include('footer.php');
- ?>
