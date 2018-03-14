@@ -2,31 +2,15 @@
 <?php
 include('mainnav.php');
  ?>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- (picture of error to use device instead of pc)
-
+ <img src="assets\images\error4pc.jpg">
  <script type="text/javascript">
 <!--
 if (screen.width <= 699) {
-document.location = "try.php";
+document.location = "sampno.php";
 }
 //-->
 </script>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
  <?php
 include('footer.php');
 ?>

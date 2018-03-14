@@ -19,7 +19,7 @@ include('mainnav.php');
 
  $sql = "INSERT INTO systemcred (fname,mname,lname,username,password,position) VALUES
  VALUES ( ".$_POST["fname"]."','".$_POST["mname"]."','".$_POST["lname"]."','".$_POST["user"]."',
- '".$_POST["password"]."','".$_POST["position"]."')";
+ '".md5($_POST["password"])."','".$_POST["position"]."')";
 
  if ($con->query($sql) === TRUE) {
    echo ("<SCRIPT LANGUAGE='JavaScript'>

@@ -2438,9 +2438,5 @@
 
     <button class="print-button"><span class="print-icon"></span></button>
 </div>
-
-
-
-	
-	
-	
+</div>
+</div>  
