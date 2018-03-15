@@ -169,7 +169,7 @@ if($rowval = mysql_fetch_array($result))  {
     $pixcolor = $_POST['pixcolor'];
 
 
-        $sql = "UPDATE temp SET res_n='$nitro',res_n_val='$pixcolor' WHERE 1";
+        $sql = "UPDATE temp SET res_n='$res_n',res_n_val='$pixcolor' WHERE 1";
 
 
     if ($conn->query($sql) === TRUE) {

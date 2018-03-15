@@ -35,7 +35,7 @@ include('mainnav.php');
 			 <div class="form-row">
                 <label>
                     <span>Date</span>
-                    <input type="date" name="date" id="date" required="required" placeholder="Please enter the date today"/><br /><br />
+                    <input type="date" name="datee" id="date" required="required" placeholder="Please enter the date today"/><br /><br />
                 </label>
             </div>
             <div class="form-row">
@@ -110,7 +110,7 @@ include('mainnav.php');
 
          	<div class="form-row">
                 <label>
-                    <span>Plantation Area</span>
+                    <span>Plantation Area<br> (in has.)</span>
                     <input type="number" name="area" id="area" required="required" placeholder="Please enter your plantation area"/><br/><br />
                 </label>
             </div>
@@ -128,7 +128,34 @@ include('mainnav.php');
 
 <?php
 if(isset($_POST["submit"])){
-$dbPassword = "";
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "db_ccasd";
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+  }
+
+$datee = $_POST['datee'];
+$name = $_POST['name'];
+$brgy = $_POST['brgy'];
+$area = $_POST['area'];
+$crop = $_POST['crop'];
+
+$sql = "UPDATE temp SET datee='$datee',name='$name',brgy='$brgy',area='$area',crop='$crop'  WHERE 1";
+if ($conn->query($sql) === TRUE) {
+  echo "<script type= 'text/javascript'>alert('New record created successfully'); window.location.href='add.php';</script>";
+}else {echo "<script type= 'text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";}
+
+
+$conn->close();
+}
+//close if(isset)
+
+/*$dbPassword = "";
 $dbUsername = "root";
 $dbServer = "localhost";
 $dbDatabase = "db_ccasd";
@@ -140,8 +167,8 @@ if ($con->connect_error) {
 die("Connection failed: " . $con->connect_error);
 }
 
-$sql = "INSERT INTO tblfarmer (date, name, brgy, area, crop)
-VALUES ('".$_POST["date"]."','".$_POST["name"]."','".$_POST["brgy"]."','".$_POST["area"]."','".$_POST["crop"]."')";
+$sql = "INSERT INTO tblfarmer (datee, name, brgy, area, crop)
+VALUES ('".$_POST["datee"]."','".$_POST["name"]."','".$_POST["brgy"]."','".$_POST["area"]."','".$_POST["crop"]."')";
 
 if ($con->query($sql) === TRUE) {
   echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -153,8 +180,17 @@ echo "<script type= 'text/javascript'>alert('Error: " . $sql . "<br>" . $con->er
 }
 
 $con->close();
-}
+*/
+
+
 ?>
+
+<?php
+if(isset($_POST['submit'])){ // Fetching variables of the form which travels in URL
+
+} // Closingif
+
+ ?>
 
 </body>
 </html>

@@ -46,9 +46,9 @@
                 </span>
             </div>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-            	<li class="nav-item">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+          <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+              <li class="nav-item">
                     <a class="nav-link link text-white display-4" href="MapMain.php">MAP</a>
                 </li>
                 <li class="nav-item">
@@ -57,13 +57,22 @@
                  <li class="nav-item">
                     <a class="nav-link link text-white display-4" href="report.php">REPORT</a>
                 </li>
-                <li class="nav-item">
-                   <a class="nav-link link text-white display-4" href="acc.php">MANAGE ACCOUNTS</a>
-               </li>
-                 <li class="nav-item">
+
+<li class="nav-item dropdown open ">
+                  <a class="nav-link link text-white dropdown-toggle display-4" data-toggle="dropdown-submenu" aria-expanded="true">
+                      MANAGE ACCOUNTS
+                  </a>
+        <div class="dropdown-menu">
+        <a class="text-white dropdown-item display-4" aria-expanded="true" href="acc.php">ACCOUNTS<br></a>
+        <a class="text-white dropdown-item display-4"  aria-expanded="true" href="userlog.php">USERLOG<br></a>
+        </div>
+              </li>
+               <li class="nav-item">
                  <a class="nav-link link text-white display-4" href="logout.php">LOGOUT</a>
-                </li>
+               </li>
+        </div>
+
               </ul>
-                    </div>
+        </div>
     </nav>
 </section>

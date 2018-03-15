@@ -176,7 +176,7 @@ $pixcolor = $_POST['pixcolor'];
     $sql = "UPDATE temp SET res_ph='$ph',resp_ph_val='$pixcolor' WHERE 1";
 
     if ($conn->query($sql) === TRUE) {
-   echo "<script type= 'text/javascript'>alert('New record created successfully'); window.location.href='add.php';
+   echo "<script type= 'text/javascript'>alert('New record created successfully'); window.location.href='adddata.php';
   </script>";
 
 
@@ -201,5 +201,5 @@ $pixcolor = $_POST['pixcolor'];
 </script>
 
 <?php
-include(' footer.php');
+include('footer.php');
 ?>

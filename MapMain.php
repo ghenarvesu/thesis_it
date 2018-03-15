@@ -5,6 +5,8 @@ include('mainnav.php');
  ?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script  src="assets/js/index.js"></script>
+
 
 <div class="container">
         <div class="media-container-row">
@@ -15,6 +17,17 @@ include('mainnav.php');
     </div>
 
    <div class="main-content">
+  <center>   <select name="position">
+     <option value="Choose">Choose </option>
+     <option value="Farmers">Farmers</option>
+     <option value="Nitrogen">Nitrogen</option>
+     <option value="Phosporus">Phosporus</option>
+     <option value="Potassium">Potassium</option>
+     <option value="pH">ph</option>
+
+   </select></center>
+
+
   <div class="map">
   <svg version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
        viewBox="0 -21.6 761 919" style="enable-background:new 0 -21.6 761 919;" xml:space="preserve">
@@ -214,9 +227,44 @@ include('mainnav.php');
 </div>
 </div>
 
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script>
 
-    <script  src="assets/js/index.js"></script>
+var temp_array= regions.map(function(item){
+    return item.region_name;
+});
+
+$(function() {
+
+    for(i = 0; i < regions.length; i++) {
+
+        $('#'+ regions[i].region_code)
+        .data('region', regions[i]);
+    }
+
+    $('.map g').mouseover(function (e) {
+        var region_data=$(this).data('region');
+        $('<div class="info_panel">'+
+            region_data.region_name + '<br>' +
+
+          	'</div>'
+         )
+        .appendTo('body');
+    })
+    .mouseleave(function () {
+        $('.info_panel').remove();
+    })
+    .mousemove(function(e) {
+        var mouseX = e.pageX, //X coordinates of mouse
+            mouseY = e.pageY; //Y coordinates of mouse
+
+        $('.info_panel').css({
+            top: mouseY-50,
+            left: mouseX - ($('.info_panel').width()/2)
+        });
+    });
+
+});
+</script>
 <br>
 <br>
 <br>
