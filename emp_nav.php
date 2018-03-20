@@ -15,11 +15,12 @@
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 
-    </head>
+
+
+</head>
 <body>
   <section class="menu cid-qMbKh59P1X" once="menu" id="menu1-i">
     <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
@@ -34,29 +35,32 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                 <span class="navbar-logo">
-                    <a href="https://mobirise.com">
-                         <img src="assets/images/logo2.png" alt="Mobirise" style="height: 3.8rem;">
+                    <a href="mapmain.php">
+                         <img src="assets/images/logo.png" alt="Mobirise" style="height: 3.8rem;">
                     </a>
                 </span>
                 <span class="navbar-caption-wrap">
-                    <a class="navbar-caption text-white display-4" href="https://mobirise.com">
-                        MOBIRISE
-                    </a>
+                    <a class="navbar-caption text-white display-4" href="mapmain.php">
+                        AGRICULTURAL SERVICES DEPARTMENT
+                      </a>
                 </span>
             </div>
         </div>
-
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="home.php">
-                        HOME
-                    </a>
-                </li>
-             </ul>
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="login.php">
-                    LOGIN
-                </a></div>
+        <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+    <li class="nav-item">
+      <a class="nav-link link text-white display-4" href="MapMain.php">MAP</a>
+    </li>
+  
+    <li class="nav-item">
+      <a class="nav-link link text-white display-4" href="report.php">REPORT</a>
+    </li>
+
+    <li class="nav-item">
+    <a class="nav-link link text-white display-4" href="logout.php">LOGOUT</a>
+    </li>
+</ul>
+
         </div>
     </nav>
 </section>

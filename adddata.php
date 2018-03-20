@@ -2,6 +2,27 @@
 <?php
 include('mainnav.php');
  ?>
+ <?php
+// Remove below comments from header If  you are making calls from another server
+	$dbPassword = "";
+	$dbUsername = "root";
+	$dbServer = "localhost";
+	$dbDatabase = "db_ccasd";
+	$q = $_GET['q'];
+if(isset($q) && !empty($q)) {
+	$conn = mysqli_connect($dbServer, $dbUsername, $dbPassword, $dbDatabase);
+    $query = "SELECT ID, crop FROM tblcrops WHERE crop LIKE '$q%'";
+    $result = mysqli_query($conn, $query);
+    $res = array();
+    while($resultSet = mysqli_fetch_assoc($result)) {
+     $res[$resultSet['ID']] = $resultSet['crop'];
+    }
+    if(!$res) {
+        $res[0] = 'Not found!';
+    }
+    echo json_encode($res);
+}
+?>
 
 <html lang="en">
 <head>
@@ -19,7 +40,7 @@ include('mainnav.php');
 <div class="container">
         <div class="media-container-row">
             <div class="title col-12 col-md-8">
-                <h2 class="align-center pb-3 mbr-fonts-style display-2"><br><br>Soil Test
+                <h2 class="align-center pb-3 mbr-fonts-style display-2"><br><br>Farmer's Information
                 </h2>
                 <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5"></h3>
 
@@ -35,20 +56,20 @@ include('mainnav.php');
 			 <div class="form-row">
                 <label>
                     <span>Date</span>
-                    <input type="date" name="datee" id="date" required="required" placeholder="Please enter the date today"/><br /><br />
+                    <input type="date" name="datee" id="date" required="required" placeholder="Enter the date today"/><br /><br />
                 </label>
             </div>
             <div class="form-row">
                 <label>
                     <span>Farmer's Name</span>
-                    <input type="text" name="name" id="name" required="required" placeholder="Please enter your full name"/><br/><br />
+                    <input type="text" name="name" id="name" required="required" placeholder="Enter full name"/><br/><br />
                 </label>
             </div>
             <div class="form-row">
                 <label>
                     <span>Baranggay</span>
 					<select name="brgy">
-						<option value="please choose tour barangay">Please choose your barangay</option>
+						<option value="please choose tour barangay">Choose your Barangay</option>
 						<option value="bagong kalsada">Bagong Kalsada</option>
 						<option value="banlic">Banlic</option>
 						<option value="barandal">Barandal</option>
@@ -111,13 +132,13 @@ include('mainnav.php');
          	<div class="form-row">
                 <label>
                     <span>Plantation Area<br> (in has.)</span>
-                    <input type="number" name="area" id="area" required="required" placeholder="Please enter your plantation area"/><br/><br />
+                    <input type="number" name="area" id="area" required="required" placeholder="Enter your plantation area"/><br/><br />
                 </label>
             </div>
             <div class="form-row">
                 <label>
                     <span>Crop</span>
-                    <input type="text" name="crop" id="crop" required="required" placeholder="Please enter your crop"/><br/><br />
+                    <input type="text" name="crop" id="crop" required="required" placeholder="Enter your crop"/><br/><br />
 
                 </label>
             </div>
@@ -153,34 +174,6 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 }
-//close if(isset)
-
-/*$dbPassword = "";
-$dbUsername = "root";
-$dbServer = "localhost";
-$dbDatabase = "db_ccasd";
-
-// Create connection
-$con=new mysqli($dbServer,$dbUsername,$dbPassword,$dbDatabase);
-// Check connection
-if ($con->connect_error) {
-die("Connection failed: " . $con->connect_error);
-}
-
-$sql = "INSERT INTO tblfarmer (datee, name, brgy, area, crop)
-VALUES ('".$_POST["datee"]."','".$_POST["name"]."','".$_POST["brgy"]."','".$_POST["area"]."','".$_POST["crop"]."')";
-
-if ($con->query($sql) === TRUE) {
-  echo ("<SCRIPT LANGUAGE='JavaScript'>
-     window.alert('Succesfully Registered')
-     window.location.href='fertreco.php';
-     </SCRIPT>");}
-else {
-echo "<script type= 'text/javascript'>alert('Error: " . $sql . "<br>" . $con->error."');</script>";
-}
-
-$con->close();
-*/
 
 
 ?>

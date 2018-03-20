@@ -8,6 +8,7 @@
   width: 550px;
   margin: 0 auto;
   display: block;
+
 }
 
 .map g {
@@ -17,7 +18,7 @@
 }
 
 .map g:hover {
-  fill: #fc0 !important;
+  fill: #fc0 
   cursor: help;
 }
 

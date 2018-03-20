@@ -22,6 +22,22 @@ session_start();
 <!-- You only need this form and the form-basic.css -->
 
 <?php
+$sample = isset($_POST['sample']) ? $_POST['sample']: "";
+
+$res_n = isset($_POST['res_n']) ? $_POST['res_n']: "";
+$res_n_val = isset($_POST['res_n_val']) ? $_POST['res_n_val']: "";
+$res_p = isset($_POST['res_p']) ? $_POST['res_p']: "";
+$res_p_val = isset($_POST['res_p_val']) ? $_POST['res_p_val']: "";
+$res_k = isset($_POST['res_k']) ? $_POST['res_k']: "";
+$res_k_val = isset($_POST['res_k_val']) ? $_POST['res_k_val']: "";
+$res_ph = isset($_POST['res_ph']) ? $_POST['res_ph']: "";
+$resp_ph_val = isset($_POST['resp_ph_val']) ? $_POST['resp_ph_val']: "";
+$datee= isset($_POST['datee']) ? $_POST['datee']: "";
+$name= isset($_POST['name']) ? $_POST['name']: "";
+$brgy= isset($_POST['brgy']) ? $_POST['brgy']: "";
+$area= isset($_POST['area']) ? $_POST['area']: "";
+$crop= isset($_POST['crop']) ? $_POST['crop']: "";
+
 $con = mysql_connect("localhost","root","");
 
 if (!$con)
@@ -83,7 +99,7 @@ mysql_close($con);
     <span>Nitrogen</span>
     <input type="text" name="resn" value='<?php echo  $res_n; ?>'/>
     <span> </span>
-    <input type="text" name="resnval" value='<?php echo  $res_n_val; ?>'/>
+    <input type="text" name="resnval" value='<?php echo  $res_n_val; ?>' readonly/>
 
   </label>
 </div>
@@ -93,7 +109,7 @@ mysql_close($con);
     <span>Phosporus</span>
     <input type="text" name="resp" value='<?php echo  $res_p; ?>'/>
     <span> </span>
-    <input type="text" name="respval" value='<?php echo  $res_p_val; ?>'/>
+    <input type="text" name="respval" value='<?php echo  $res_p_val; ?>' readonly//>
 
   </label>
 </div>
@@ -103,7 +119,7 @@ mysql_close($con);
     <span>Potassium</span>
     <input type="text" name="resk" value='<?php echo  $res_k; ?>'/>
     <span> </span>
-    <input type="text" name="reskval" value='<?php echo  $res_k_val; ?>'/>
+    <input type="text" name="reskval" value='<?php echo  $res_k_val; ?>' readonly//>
 
   </label>
 </div>
@@ -113,7 +129,7 @@ mysql_close($con);
   <span>pH</span>
   <input type="text" name="resph" value='<?php echo  $res_ph; ?>'/>
   <span> </span>
-  <input type="text" name="resphval" value='<?php echo  $resp_ph_val; ?>'/>
+  <input type="text" name="resphval" value='<?php echo  $resp_ph_val; ?>' readonly//>
   </label>
 </div>
 

@@ -56,7 +56,8 @@
 				if ($rows == 1) {
 					if ($position == "admin") {
 						$_SESSION['login_user']=$position; // Initializing Session
-						header("location: MapMain.php"); // Redirecting To Other Page
+						header("location: mapmain.php?user=admin"); // Redirecting To Other Page
+
 					} elseif ($position == "employee") {
 						$_SESSION['login_user']=$position; // Initializing Session
 						header("location: report.php"); // Redirecting To Other Page

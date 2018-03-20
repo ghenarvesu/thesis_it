@@ -2,7 +2,14 @@
 <?php
 include('mainnav.php');
  ?>
- <img src="assets\images\error4pc.jpg">
+
+ <div class="main-content">
+<br>
+ <img src="assets\images\error4pc.png" width="90%"  height="50%">
+ <bR>
+</div>
+
+
  <script type="text/javascript">
 <!--
 if (screen.width <= 699) {
